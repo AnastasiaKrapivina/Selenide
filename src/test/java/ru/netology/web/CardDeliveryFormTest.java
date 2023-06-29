@@ -42,15 +42,15 @@ public class CardDeliveryFormTest {
 //    }
 //   Вспомогательный метод к задаче 2,
 //   генерирует месяц и год для выбора даты на неделю вперед, не работает русская локаль.
-    public String monthAndYear() {//
-        LocalDate now = LocalDate.now(); // получаем текущую дату
-        now = now.plusDays(7);
-        int month = now.getMonthValue();
-        int year = now.getYear();
-        String[] monthNames = {"Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"};
-        String monthEnd = monthNames[month-1];
-        return monthEnd+" "+ year; // месяц и год
-    }
+//    public String monthAndYear() {//
+//        LocalDate now = LocalDate.now(); // получаем текущую дату
+//        now = now.plusDays(7);
+//        int month = now.getMonthValue();
+//        int year = now.getYear();
+//        String[] monthNames = {"Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"};
+//        String monthEnd = monthNames[month-1];
+//        return monthEnd+" "+ year; // месяц и год
+//    }
 
     @Test
         // Тест к задаче 1
@@ -82,7 +82,8 @@ public class CardDeliveryFormTest {
         form.$("[data-test-id=date] input").sendKeys(Keys.CONTROL + "A");
         form.$("[data-test-id=date] input").sendKeys(Keys.BACK_SPACE);
         form.$("[data-test-id=date] .icon-button").click();
-        if ($(".calendar__name").has(exactText(monthAndYear()))) {
+        if ((generateDate(3, "MM.yyyy")).equals(generateDate(7, "MM.yyyy")))
+        {
             $$(".calendar__day").find(exactText(generateDate(7, "d"))).click();
         } else {
             $$(".calendar__arrow_direction_right").last().click();
@@ -110,7 +111,8 @@ public class CardDeliveryFormTest {
         form.$("[data-test-id=date] input").sendKeys(Keys.CONTROL + "A");
         form.$("[data-test-id=date] input").sendKeys(Keys.BACK_SPACE);
         form.$("[data-test-id=date] .icon-button").click();
-        if ($(".calendar__name").has(text(monthAndYear()))) {
+        if ((generateDate(3, "MM.yyyy")).equals(generateDate(7, "MM.yyyy")))
+        {
             $$(".calendar__day").find(exactText(generateDate(7, "d"))).click();
         } else {
             $$(".calendar__arrow_direction_right").last().click();
@@ -136,7 +138,8 @@ public class CardDeliveryFormTest {
         form.$("[data-test-id=date] input").sendKeys(Keys.CONTROL + "A");
         form.$("[data-test-id=date] input").sendKeys(Keys.BACK_SPACE);
         form.$("[data-test-id=date] .icon-button").click();
-        if ($(".calendar__name").has(text(monthAndYear()))) {
+        if ((generateDate(3, "MM.yyyy")).equals(generateDate(7, "MM.yyyy")))
+        {
             $$(".calendar__day").find(exactText(generateDate(7, "d"))).click();
         } else {
             $$(".calendar__arrow_direction_right").last().click();
